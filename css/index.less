@@ -1,0 +1,262 @@
+body { /*初始化body样式*/
+  min-width: 320px;
+  max-width: 750px;
+  margin: 0 auto;
+  /* height: 1200px;*/
+  background-color: #f2f4f7;
+}
+
+a {
+  text-decoration: none;
+  color: #707070;
+}
+
+/*进行约束： 但屏幕尺寸大于750px时，不再继续增大，定位在750px*/
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 37.5px !important; /*限定根目录的字体大小*/
+  }
+}
+
+.bgColor {
+  background-color: #FFFFFF;
+  padding-bottom: 1.147rem;
+}
+
+/*重要***： 设置rem插件的转换阀值：37.5; 自动实现了比例适配*/
+
+div {
+  width: 2.667rem;
+  height: 2.667rem;
+}
+
+.header {
+  height: 2.133rem;
+  border-bottom: #eaeaea solid 1px;
+  text-align: center;
+  line-height: 2.133rem;
+  font-size: 0.933rem;
+  color: #1c1c1c;
+}
+
+/*导航栏*/
+.nav {
+  display: flex;
+  flex-wrap: wrap; /*需要开启强制换行,才能使6个标签2行显示*/
+  padding: 1.2rem 0 1.6rem 0;
+
+  .aItem {
+    display: flex; /*3--注意！！！ 下面设置主轴方向和侧轴对齐，前提这个标签本身要开启flex属性*/
+    width: 33.33%; /*一行a标签为3个，每个占33.33% ,需要开启换行才行*/
+    flex-direction: column; /*1--设置主轴方向为y轴*/
+    align-items: center; /*2--侧轴居中对齐*/
+
+    img {
+      width: 3.707rem;
+      height: 3.707rem;
+    }
+
+    span {
+      font-size: 0.667rem;
+      color: #707070;
+    }
+
+    /*给前三个a中间空出距离*/
+
+    &:nth-child(-n+3) {
+      margin-bottom: 1.65rem
+    }
+  }
+}
+
+/*go模块*/
+.go {
+  img { /*图片自动缩放*/
+    max-width: 100%;
+  }
+
+  margin: 0 0.267rem 0 0.48rem;
+}
+
+/*就业指导模块*/
+.content-pub {
+  padding: 1.067rem 0.64rem;
+  background-color: #FFFFFF;
+  margin-top: 0.267rem;
+
+  .content-header {
+    display: flex;
+    width: 100%;
+    height: 1.013rem;
+    line-height: 1.013rem;
+    justify-content: space-between;
+    color: #333333;
+
+    h4 {
+      margin: 0;
+      font-size: 0.747rem;
+      color: #333333;
+
+      .icon {
+        display: inline-block;
+        width: 1.013rem;
+        height: 1.013rem;
+        vertical-align: bottom; /*图片和文字非基线对齐：middle*/
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .more {
+      font-size: 0.587rem;
+      color: #999;
+    }
+  }
+}
+
+/*就业指导轮播图样式，html和body不要复制过来*/
+.carousel-chart {
+  position: relative; /*处理左右箭头的方式：开启父元素相对定位*/
+  width: 100%;
+  height: 100%;
+  margin-top: 1.04rem;
+
+  .pic-border { /*约束一下尺寸，让图片尽量缩小在2个箭头中间*/
+
+  }
+
+  .swiper-container {
+    height: 100%;
+    width: 14.4rem;
+
+    /*可以单独设置左右箭头的样式*/
+    /* --swiper-theme-color: #ff6600;设置Swiper风格 */
+    /*--swiper-navigation-color: rgba(86, 115, 217, 0.89); 单独设置按钮颜色 */
+    /*--swiper-navigation-size: 1rem; 设置按钮大小 */
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column; /*我们是上下显示，因此改成y轴为主轴*/
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    transition: 300ms;
+    transform: scale(0.8); /*其余兄弟图片的缩放为0.8*/
+    opacity: 0.38; /*兄弟盒子的透明度为0.38*/
+
+    a {
+      width: 9.013rem;
+      height: 10.027rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    p {
+      width: 9.013rem;
+      font-size: 0.667rem;
+      margin-top: 0.64rem;
+      color: #333333;
+
+    }
+  }
+
+  .swiper-slide-active, .swiper-slide-duplicate-active {
+    transform: scale(1); /*当前选中主图的图片缩放大小为：1*/
+    z-index: 999; /*把当前主图的层级提升到最高，就可以压住兄弟图片*/
+    opacity: 1; /*当前盒子的透明度为：1*/
+  }
+
+
+}
+
+/*充电学习轮播图样式，html和body不要复制过来*/
+.study-content{
+  padding-bottom: 3.733rem;  /*底部区域：30px+footer:110px*/
+}
+.study {
+  width: 100%;
+  height: 100%;
+
+  .study-pic {
+    padding: 0.267rem;
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    width: 6.733rem;
+    height: 9.067rem;
+    text-align: left;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 0.267rem;
+    box-shadow: 0 0 0.267rem rgba(0, 0, 0, 0.1);
+
+    /*正常布局就行*/
+
+    h5 {
+      font-size: 0.667rem;
+      margin: 0.533rem 0; /*去除h5的边框*/
+      font-weight: 400; /*文字不要很粗*/
+      padding: 0 0.267rem;
+    }
+
+    p {
+      font-size: 0.693rem;
+      color: #ff4400;
+      padding: 0 0.267rem;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 2.933rem;
+  background-color: #fff;
+  z-index: 9999;  /*需要提升层级，因为别的兄弟有层级压在本层上面了*/
+
+  display: flex;
+  border-top: #ccc solid 1px;
+  padding: 0.533rem;
+  .faItems{
+     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     img{
+       width: 1.04rem;
+       height: 1.093rem;
+     }
+    p{
+      font-size: 0.587rem;
+      color: #666;
+      margin-top: 0.267rem;
+    }
+  }
+}
+
